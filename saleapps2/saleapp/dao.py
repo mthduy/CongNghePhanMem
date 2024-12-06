@@ -52,5 +52,8 @@ def load_product_by_id(id):
     return Product.query.get(id)
 
 
+def get_user_by_id(user_id):
+    return User.query.get(user_id)
+
 if __name__ == "__main__":
     print(load_products())

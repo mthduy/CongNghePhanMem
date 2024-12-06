@@ -6,5 +6,17 @@ from models import Category, Product
 
 admin= Admin(app= app, name="E-commerce Website", template_mode="bootstrap4")
 
-admin.add_views(ModelView(Category,db.session))
-admin.add_views(ModelView(Product,db.session))
+
+class MyCategoryView(ModelView):
+    column_list = ["name", "products"]
+
+
+class MyProductView(ModelView):
+    column_list = ["name","category_id","image"]
+    column_searchable_list = ["id","name"]
+    column_filters = ["id","name"]
+    can_export = True
+
+
+admin.add_views(MyCategoryView(Category,db.session))
+admin.add_views(MyProductView(Product,db.session))

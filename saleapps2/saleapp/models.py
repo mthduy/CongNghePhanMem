@@ -1,9 +1,10 @@
 from  sqlalchemy import Column, Integer, String, Boolean, Float, ForeignKey
 from sqlalchemy.orm import relationship
 from saleapp import app, db
+from flask_login import UserMixin
 
 
-class User(db.Model):
+class User(db.Model,UserMixin):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(50))
     username = Column(String(50), unique=True, nullable=False)
